@@ -12,3 +12,15 @@ class Solution:
             r += 1
         
         return highestProf
+
+# solution 2:
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        minimum = prices[0]
+        max_profit = 0
+        for price in prices:
+            if price < minimum:
+                minimum = price
+            max_profit = max(max_profit, price - minimum)
+        
+        return max_profit
