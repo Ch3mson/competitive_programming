@@ -1,0 +1,545 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sample API",
+    "description": "A simple API for testing OpenAPI middleware implementation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Returns a list of users",
+        "description": "Get all users in the system",
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "description": "A list of users",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "listUsers": {
+                    "value": {
+                      "users": [
+                        {
+                          "id": "1",
+                          "name": "John Doe",
+                          "email": "john@example.com"
+                        },
+                        {
+                          "id": "2",
+                          "name": "Jane Smith",
+                          "email": "jane@example.com"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a new user",
+        "description": "Add a new user to the system",
+        "operationId": "createUser",
+        "requestBody": {
+          "description": "User object to be added",
+          "required": true,
+          "content": {
+            "application/json": {
+              "examples": {
+                "newUser": {
+                  "value": {
+                    "name": "Alice Johnson",
+                    "email": "alice@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "newUser": {
+                    "value": {
+                      "id": "3",
+                      "name": "Alice Johnson",
+                      "email": "alice@example.com",
+                      "created_at": "2025-05-20T12:00:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalidRequest": {
+                    "value": {
+                      "error": "Invalid user data provided"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Returns a user by ID",
+        "description": "Get a specific user by their ID",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the user to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "user1": {
+                    "value": {
+                      "id": "1",
+                      "name": "John Doe",
+                      "email": "john@example.com",
+                      "role": "admin"
+                    }
+                  },
+                  "user2": {
+                    "value": {
+                      "id": "2",
+                      "name": "Jane Smith",
+                      "email": "jane@example.com",
+                      "role": "user"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "notFound": {
+                    "value": {
+                      "error": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates a user",
+        "description": "Update an existing user's information",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the user to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated user object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "examples": {
+                "updateName": {
+                  "value": {
+                    "name": "John Smith"
+                  }
+                },
+                "updateEmail": {
+                  "value": {
+                    "email": "john.smith@example.com"
+                  }
+                },
+                "updateBoth": {
+                  "value": {
+                    "name": "John Smith",
+                    "email": "john.smith@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User updated successfully",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "updateName": {
+                    "value": {
+                      "id": "1",
+                      "name": "John Smith",
+                      "email": "john@example.com",
+                      "updated_at": "2025-05-20T14:30:00Z"
+                    }
+                  },
+                  "updateEmail": {
+                    "value": {
+                      "id": "1",
+                      "name": "John Doe",
+                      "email": "john.smith@example.com",
+                      "updated_at": "2025-05-20T14:30:00Z"
+                    }
+                  },
+                  "updateBoth": {
+                    "value": {
+                      "id": "1",
+                      "name": "John Smith",
+                      "email": "john.smith@example.com",
+                      "updated_at": "2025-05-20T14:30:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "notFound": {
+                    "value": {
+                      "error": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a user",
+        "description": "Delete a user from the system",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the user to delete",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted successfully"
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "notFound": {
+                    "value": {
+                      "error": "User not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "Returns a list of products",
+        "description": "Get all products in the system",
+        "operationId": "getProducts",
+        "responses": {
+          "200": {
+            "description": "A list of products",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "listProducts": {
+                    "value": {
+                      "products": [
+                        {
+                          "id": "p1",
+                          "name": "Laptop",
+                          "price": 999.99
+                        },
+                        {
+                          "id": "p2",
+                          "name": "Smartphone",
+                          "price": 699.99
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Returns a product by ID",
+        "description": "Get a specific product by its ID",
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the product to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "product1": {
+                    "value": {
+                      "id": "p1",
+                      "name": "Laptop",
+                      "description": "High-performance laptop with 16GB RAM",
+                      "price": 999.99,
+                      "in_stock": true
+                    }
+                  },
+                  "product2": {
+                    "value": {
+                      "id": "p2",
+                      "name": "Smartphone",
+                      "description": "Latest model with 128GB storage",
+                      "price": 699.99,
+                      "in_stock": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "notFound": {
+                    "value": {
+                      "error": "Product not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/popular": {
+      "get": {
+        "summary": "Returns a list of popular products on the platform",
+        "description": "Get all recently trending products",
+        "operationId": "getPopularProducts",
+        "responses": {
+          "200": {
+            "description": "A list of popular products",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "listProducts": {
+                    "value": {
+                      "products": [
+                        {
+                          "id": "p2",
+                          "name": "Smartphone",
+                          "price": 699.99
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "post": {
+        "summary": "Creates a new order",
+        "description": "Create a new order in the system",
+        "operationId": "createOrder",
+        "requestBody": {
+          "description": "Order to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "examples": {
+                "newOrder": {
+                  "value": {
+                    "user_id": "1",
+                    "products": [
+                      {
+                        "id": "p1",
+                        "quantity": 1
+                      },
+                      {
+                        "id": "p2",
+                        "quantity": 2
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "newOrder": {
+                    "value": {
+                      "order_id": "o1",
+                      "user_id": "1",
+                      "products": [
+                        {
+                          "id": "p1",
+                          "name": "Laptop",
+                          "price": 999.99,
+                          "quantity": 1
+                        },
+                        {
+                          "id": "p2",
+                          "name": "Smartphone",
+                          "price": 699.99,
+                          "quantity": 2
+                        }
+                      ],
+                      "total": 2399.97,
+                      "created_at": "2025-05-20T15:00:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "summary": "Returns an order by ID",
+        "description": "Get a specific order by its ID",
+        "operationId": "getOrderById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the order to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "order1": {
+                    "value": {
+                      "order_id": "o1",
+                      "user_id": "1",
+                      "user_name": "John Doe",
+                      "products": [
+                        {
+                          "id": "p1",
+                          "name": "Laptop",
+                          "price": 999.99,
+                          "quantity": 1
+                        },
+                        {
+                          "id": "p2",
+                          "name": "Smartphone",
+                          "price": 699.99,
+                          "quantity": 2
+                        }
+                      ],
+                      "total": 2399.97,
+                      "status": "shipped",
+                      "created_at": "2025-05-20T15:00:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "notFound": {
+                    "value": {
+                      "error": "Order not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

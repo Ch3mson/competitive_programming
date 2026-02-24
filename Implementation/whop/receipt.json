@@ -1,0 +1,19 @@
+{
+  "id": "f27dba29-261a-4e07-bfd7-e703b25915cd",
+  "timestamp": 1765584416,
+  "extracted_data": {
+    "merchant_name": "BLUE BOTTLE COFFEE",
+    "line_items": [
+      {
+        "item_date": null,
+        "item_name": "Hard Drink",
+        "item_quantity": 1.0,
+        "item_unit_price": null,
+        "item_total_price": 6.34
+      }
+    ],
+    "total_amount": 6.34,
+    "tip": null
+  },
+  "user_id": "bc7a2df1-a46e-40b8-8e5c-456f7ea21150"
+}
