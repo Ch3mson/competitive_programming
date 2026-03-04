@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "name": "Wireless Mouse",
+      "sku": "WM-001",
+      "price": 29.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p002", "p003"]
+    },
+    {
+      "id": "p002",
+      "name": "Mechanical Keyboard",
+      "sku": "MK-002",
+      "price": 89.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p001", "p004"]
+    },
+    {
+      "id": "p003",
+      "name": "Gaming Mouse",
+      "sku": "GM-003",
+      "price": 59.99,
+      "category": "electronics",
+      "in_stock": false,
+      "similar_products": ["p001", "p005"]
+    },
+    {
+      "id": "p004",
+      "name": "USB-C Hub",
+      "sku": "UH-004",
+      "price": 45.00,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p002", "p006"]
+    },
+    {
+      "id": "p005",
+      "name": "Mouse Pad XL",
+      "sku": "MP-005",
+      "price": 19.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p003"]
+    },
+    {
+      "id": "p006",
+      "name": "Laptop Stand",
+      "sku": "LS-006",
+      "price": 35.00,
+      "category": "accessories",
+      "in_stock": false,
+      "similar_products": ["p004", "p007"]
+    },
+    {
+      "id": "p007",
+      "name": "Monitor Light Bar",
+      "sku": "ML-007",
+      "price": 55.00,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p006", "p002"]
+    }
+  ]
+}

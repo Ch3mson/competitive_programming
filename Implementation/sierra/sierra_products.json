@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "name": "Wireless Bluetooth Mouse",
+      "sku": "WBM-001",
+      "price": 29.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p002", "p003", "p008"]
+    },
+    {
+      "id": "p002",
+      "name": "Mechanical Gaming Keyboard",
+      "sku": "MGK-002",
+      "price": 89.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p001", "p004", "p007"]
+    },
+    {
+      "id": "p003",
+      "name": "RGB Gaming Mouse",
+      "sku": "RGM-003",
+      "price": 59.99,
+      "category": "electronics",
+      "in_stock": false,
+      "similar_products": ["p001", "p002"]
+    },
+    {
+      "id": "p004",
+      "name": "USB-C Docking Station",
+      "sku": "UDS-004",
+      "price": 149.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p005", "p006"]
+    },
+    {
+      "id": "p005",
+      "name": "Thunderbolt Hub",
+      "sku": "TBH-005",
+      "price": 199.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p004"]
+    },
+    {
+      "id": "p006",
+      "name": "USB Hub 7-Port",
+      "sku": "UH7-006",
+      "price": 35.00,
+      "category": "accessories",
+      "in_stock": false,
+      "similar_products": ["p004", "p005"]
+    },
+    {
+      "id": "p007",
+      "name": "Monitor Light Bar",
+      "sku": "MLB-007",
+      "price": 55.00,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p009", "p010"]
+    },
+    {
+      "id": "p008",
+      "name": "Ergonomic Mouse Pad XL",
+      "sku": "EMP-008",
+      "price": 24.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p001", "p003"]
+    },
+    {
+      "id": "p009",
+      "name": "Desk Lamp LED",
+      "sku": "DLL-009",
+      "price": 45.00,
+      "category": "home_office",
+      "in_stock": true,
+      "similar_products": ["p007", "p010"]
+    },
+    {
+      "id": "p010",
+      "name": "Monitor Stand Riser",
+      "sku": "MSR-010",
+      "price": 39.99,
+      "category": "home_office",
+      "in_stock": true,
+      "similar_products": ["p007", "p009", "p011"]
+    },
+    {
+      "id": "p011",
+      "name": "Cable Management Kit",
+      "sku": "CMK-011",
+      "price": 19.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p010"]
+    },
+    {
+      "id": "p012",
+      "name": "Webcam 4K",
+      "sku": "WC4-012",
+      "price": 129.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p013", "p014"]
+    },
+    {
+      "id": "p013",
+      "name": "Ring Light 18inch",
+      "sku": "RL8-013",
+      "price": 79.99,
+      "category": "electronics",
+      "in_stock": false,
+      "similar_products": ["p012", "p007"]
+    },
+    {
+      "id": "p014",
+      "name": "USB Microphone",
+      "sku": "UMC-014",
+      "price": 69.99,
+      "category": "electronics",
+      "in_stock": true,
+      "similar_products": ["p012", "p015"]
+    },
+    {
+      "id": "p015",
+      "name": "Boom Arm Stand",
+      "sku": "BAS-015",
+      "price": 34.99,
+      "category": "accessories",
+      "in_stock": true,
+      "similar_products": ["p014", "p013"]
+    }
+  ]
+}

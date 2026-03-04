@@ -1,0 +1,51 @@
+{
+  "labels": [
+    {
+      "isStart": true,
+      "name": "Start Point",
+      "coordinate": [-122.4000, 47.6000]
+    },
+    {
+      "isStart": false,
+      "name": "Checkpoint Alpha",
+      "coordinate": [-122.3985, 47.6015]
+    },
+    {
+      "isStart": false,
+      "name": "Checkpoint Beta",
+      "coordinate": [-122.3965, 47.6035]
+    },
+    {
+      "isStart": false,
+      "name": "End Point",
+      "coordinate": [-122.3945, 47.6055]
+    }
+  ],
+  "paths": [
+    {
+      "colour": "red",
+      "coordinates": [
+        [-122.4000, 47.6000],
+        [-122.3995, 47.6005],
+        [-122.3990, 47.6010],
+        [-122.3985, 47.6015]
+      ]
+    },
+    {
+      "colour": "blue",
+      "coordinates": [
+        [-122.3985, 47.6015],
+        [-122.3975, 47.6025],
+        [-122.3965, 47.6035]
+      ]
+    },
+    {
+      "colour": "green",
+      "coordinates": [
+        [-122.3965, 47.6035],
+        [-122.3955, 47.6045],
+        [-122.3945, 47.6055]
+      ]
+    }
+  ]
+}
