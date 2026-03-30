@@ -55,24 +55,39 @@ def get_products(
     """
     # first filter_by specifications
     filtered_products = []
+    
     if filter_by:
-        filtered_products = [p for p in products if (all(p.get(key) == value for key, value in filter_by.items()))]
+        for p in products:
+            all_true = True
+            for k, v in filter_by.items():
+                if k in p and p[k] == v:
+                    continue
+                else:
+                    all_true = False
+            if all_true:
+                filtered_products.append(p)
     else:
         filtered_products = products
-
+    
     sorted_products = []
     if sort_by:
-        sorted_products = sorted(filtered_products, key=lambda item: item[sort_by], reverse = False if sort_order == "asc" else True)
+        sorted_products = sorted(filtered_products, key=lambda x: x[sort_by], reverse = True if sort_order == "desc" else False)
     else:
         sorted_products = filtered_products
-    
-    filtered_product_fields = []
-    if fields:
-        filtered_product_fields = [{key: p[key] for key in fields if key in p} for p in sorted_products]
-    else:
-        filtered_product_fields = sorted_products
 
-    return filtered_product_fields
+    filtered_field_products = []
+
+    if fields:
+        for p in sorted_products:
+            p_to_input = {}
+            for f in fields:
+                if f in p:
+                    p_to_input[f] = p[f]
+            filtered_field_products.append(p_to_input)
+    else:
+        filtered_field_products = sorted_products
+    
+    return filtered_field_products
 # ============================================================
 # PART 2: Fetch Products with Retry Logic
 # ============================================================
@@ -159,16 +174,27 @@ def get_all_recommendations(
         - A product should not appear in its own recommendations.
         - If max_depth is provided, limit how far you traverse.
     """
-    id_similar_products = {}
+    from collections import defaultdict
+
+    id_similar_products = defaultdict(set)
     for p in products:
-        id_similar_products[p["id"]] = p["similar_products"]
+        id_similar_products[p["id"]] = set(p["similar_products"])
+
+    reverse_similar_products = defaultdict(set)
+    # where within similar_products, we can point back up to id
+
+    for p in products:
+        id = p["id"]
+        for sp in p["similar_products"]:
+            reverse_similar_products[sp].add(id)
+
     visited = set()
     output = []
 
     def dfs(p):
-        if p not in id_similar_products:
+        if p not in id_similar_products or p not in reverse_similar_products:
             return
-        for nei in id_similar_products[p]:
+        for nei in id_similar_products[p] | reverse_similar_products[p]:
             if nei not in visited:
                 visited.add(nei)
                 output.append(nei)

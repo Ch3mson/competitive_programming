@@ -93,7 +93,13 @@ def problem_5():
     Expected: [{"id": "p001", "name": "Wireless Mouse"}, ...]
     """
     fields = ["id", "name"]
-    result = [{key: products[key] for key in fields if key in products} for ]
+    result = []
+    for p in products:
+        product_to_append = {}
+        for f in fields:
+            if f in p:
+                product_to_append[f] = p[f]
+        result.append(product_to_append)
     return result
 
 
@@ -103,7 +109,15 @@ def problem_6():
     Expected: [{"name": "Alice", "role": "admin"}, ...]
     """
     # YOUR CODE HERE
-    result = None
+    result = []
+    fields = ["name", "role"]
+
+    for u in users:
+        user_to_append = {}
+        for f in fields:
+            if f in u:
+                user_to_append[f] = u[f]
+        result.append(user_to_append)
     return result
 
 
